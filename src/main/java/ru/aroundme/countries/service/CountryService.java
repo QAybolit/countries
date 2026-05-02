@@ -8,5 +8,9 @@ public interface CountryService {
 
     List<Country> allCountries();
 
-    Country countryByName(String name);
+    Country countryByCode(String code);
+
+    Country createCountry(Country country);
+
+    Country updateCountryByCode(String code, Country country);
 }
