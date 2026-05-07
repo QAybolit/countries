@@ -1,16 +1,18 @@
 package ru.aroundme.countries.service;
 
-import ru.aroundme.countries.domain.Country;
+import ru.aroundme.countries.domain.CountryResponse;
+import ru.aroundme.countries.domain.CreateCountryRequest;
+import ru.aroundme.countries.domain.UpdateCountryNameRequest;
 
 import java.util.List;
 
 public interface CountryService {
 
-    List<Country> allCountries();
+    List<CountryResponse> allCountries();
 
-    Country countryByCode(String code);
+    CountryResponse countryByCode(String code);
 
-    Country createCountry(Country country);
+    CountryResponse createCountry(CreateCountryRequest countryRequest);
 
-    Country updateCountryByCode(String code, Country country);
+    CountryResponse updateCountryNameByCode(String code, UpdateCountryNameRequest countryNameRequest);
 }

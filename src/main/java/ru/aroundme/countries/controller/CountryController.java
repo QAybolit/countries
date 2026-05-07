@@ -1,6 +1,5 @@
 package ru.aroundme.countries.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -10,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ru.aroundme.countries.domain.Country;
+import ru.aroundme.countries.domain.CountryResponse;
+import ru.aroundme.countries.domain.CreateCountryRequest;
+import ru.aroundme.countries.domain.UpdateCountryNameRequest;
 import ru.aroundme.countries.service.CountryService;
 
 import java.util.List;
@@ -21,29 +22,28 @@ public class CountryController {
 
     private final CountryService countryService;
 
-    @Autowired
     public CountryController(CountryService countryService) {
         this.countryService = countryService;
     }
 
     @GetMapping("/all")
-    public List<Country> allCountries() {
+    public List<CountryResponse> allCountries() {
         return countryService.allCountries();
     }
 
     @GetMapping("/{code}")
-    public Country getCountryByCode(@PathVariable String code) {
+    public CountryResponse getCountryByCode(@PathVariable String code) {
         return countryService.countryByCode(code);
     }
 
-    @PostMapping("")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Country createCountry(@RequestBody Country country) {
-        return countryService.createCountry(country);
+    public CountryResponse createCountry(@RequestBody CreateCountryRequest countryRequest) {
+        return countryService.createCountry(countryRequest);
     }
 
     @PatchMapping("/{code}")
-    public Country updateCountry(@PathVariable String code, @RequestBody Country country) {
-        return countryService.updateCountryByCode(code, country);
+    public CountryResponse updateCountryName(@PathVariable String code, @RequestBody UpdateCountryNameRequest countryNameRequest) {
+        return countryService.updateCountryNameByCode(code, countryNameRequest);
     }
 }

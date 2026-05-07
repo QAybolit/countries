@@ -6,7 +6,7 @@ import ru.aroundme.countries.data.CountryEntity;
 
 import java.util.UUID;
 
-public record Country(
+public record CountryResponse(
         @JsonProperty("id")
         UUID id,
         @JsonProperty("country_name")
@@ -17,8 +17,8 @@ public record Country(
         String description
 ) {
 
-    public static @NonNull Country fromEntity(@NonNull CountryEntity entity) {
-        return new Country(
+    public static @NonNull CountryResponse fromEntity(@NonNull CountryEntity entity) {
+        return new CountryResponse(
                 entity.getId(),
                 entity.getCountryName(),
                 entity.getCountryCode(),
