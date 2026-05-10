@@ -27,7 +27,7 @@ public class CountryEntity {
     @Column(name = "country_name", nullable = false)
     private String countryName;
 
-    @Column(name = "country_code", nullable = false, unique = true)
+    @Column(name = "iso_code", nullable = false, unique = true)
     private String countryCode;
 
     @Column
